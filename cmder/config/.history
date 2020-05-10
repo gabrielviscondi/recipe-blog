@@ -1,9 +1,0 @@
-cd ..
-cd gabriel_apps\
-ls
-dir
-clean
-clear
-myenv\Scripts\activate
-django-admin
-django-admin.exe startproject recipeblog
