@@ -1,5 +1,5 @@
 --Ativar virtual env
-myvenv\Scripts\activate
+myenv\Scripts\activate
 
 --Rodar servidor
 python manage.py runserver
