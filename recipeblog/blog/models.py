@@ -11,6 +11,7 @@ class Receita(models.Model):
     hints = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    # image = models.FileField(upload_to = 'images/', default = 'images/noimg.jpg')
 
     def publish(self):
         self.published_date = timezone.now()
