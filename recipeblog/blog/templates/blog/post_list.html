@@ -1,14 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Seja Bem-vindo à Biblioteca de Receitas Pedubó!<br /></h1>
+                <p> Assim como a série de livros "Feito para você", esta iniciativa busca manter viva a tradução de cozinha em nossa família. Fique à vontade para contribuir com as receitas que você mais gosta para quem você mais gosta!</p>
+            </header>
     <section class="tiles">
     {% for receita in receitas %}
     
-        <article class="style1">
+        <article class="style2">
             <span class="image">
                 <img src="../../static/images/noimg.jpg" alt="" />
             </span>
-            <a href="generic.html">
+            <a href="generic/">
                 <h2>{{ receita.name }}</h2>
                 <div class="content">
                     <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
@@ -17,5 +24,7 @@
         </article>
     {% endfor %}
     </section>
+    </div>
+    </div>
 {% endblock %}
 

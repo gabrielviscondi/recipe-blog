@@ -3,3 +3,10 @@ myenv\Scripts\activate
 
 --Rodar servidor
 python manage.py runserver
+
+
+
+--adicionar
+categoria
+breve descrição
+imagem
