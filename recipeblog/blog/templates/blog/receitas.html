@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% load functions %}
+
+{% block content %}
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1><div style="text-align:center">Todas Receitas</div></h1>
+
+    <section class="tiles">
+    {% for receita in receitas %}
+    
+        <article class= {% random_class %}>
+            <span class="image">
+                <img src="../{{receita.image}}" alt="" />
+            </span>
+            <a href="../generic/{{receita.id}}">
+                <h2>{{ receita.name }}</h2>
+                <div class="content">
+                    <p>{{ receita.short_desc}}</p>
+                </div>
+            </a>
+        </article>
+    {% endfor %}
+    </section>
+    </div>
+    </div>
+{% endblock %}

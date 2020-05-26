@@ -7,6 +7,4 @@ python manage.py runserver
 
 
 --adicionar
-categoria
-breve descrição
-imagem
+Colocar hints em um quadrado estilizado

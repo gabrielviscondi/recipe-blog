@@ -3331,3 +3331,9 @@ input, select, textarea {
 			}
 
 		}
+
+
+/* Boxed */
+.boxed {
+	border: 5px solid green ;
+  }
