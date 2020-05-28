@@ -5,6 +5,17 @@ myenv\Scripts\activate
 python manage.py runserver
 
 
+--Banco
+python manage.py makemigrations blog
+python manage.py migrate blog
 
 --adicionar
 Colocar hints em um quadrado estilizado
+Implementar busca por receitas
+Conseguir colocar o nome do autor em vez da id (join)
+quando postar, ir direto para a tela dele e não para todas receitas
+renomear títulos do form
+formatar form
+form adicionar categoria
+excluir e editar receita
+
