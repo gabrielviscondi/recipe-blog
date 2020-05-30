@@ -38,10 +38,9 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="../receitas/">Todas as Receitas</a></li>
-							<li><a href="../post/new/">Adicionar Receita</a></li>
-							<li><a href="../construction/">Editar uma Receita</a></li>
-							<li><a href="../construction/">Sobre o Blog</a></li>
+							<li><a href="{% url 'receitas' %}">Todas as Receitas</a></li>
+							<li><a href="{% url 'new_recipe' %}">Adicionar Receita</a></li>
+							<li><a href="{% url 'construction' %}">Sobre o Blog</a></li>
 						</ul>
                     </nav>
                     

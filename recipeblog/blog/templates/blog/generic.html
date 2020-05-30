@@ -5,17 +5,22 @@
 <div id="main">
     <div class="inner">
         <h1>{{ receita.name }}</h1>
-        <span class="image main"><img src="../{{receita.image}}" alt="" /></span>
+        <span class="image main"><img src="../../media/{{receita.image}}" alt="" /></span>
         <h2>Nome da Receita</h2>
         <p style = "text-indent : 2em;">{{ receita.name }}</p>
         <h2>Autor(a)</h2>
-        <p style = "text-indent : 2em;">{{ receita.author_id }}</p>  
+        <p style = "text-indent : 2em;">{{ receita.author.username }} </p>  
+        <h2>Tipo</h2>
+        <p style = "text-indent : 2em;">{{ receita.id_tipo.name }} </p>  
+        <h2>Categoria</h2>
+        <p style = "text-indent : 2em;">{{ receita.id_categoria.name }} </p>  
         <h2>Ingredientes</h2>
         <p style = "text-indent : 2em;">{{ receita.ingredients }}</p>
         <h2>Passo a Passo</h2>
         <p style = "text-indent : 2em;">{{ receita.instructions }}</p>
         <div class="boxed"><h2>Dicas</h2>
-        <p style = "text-indent : 2em;">{{ receita.hints }}</p></div>        
+        <p>{{ receita.hints }}</p></div>        
+        <a class="btn btn-default" href="{% url 'edit_recipe' id=receita.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
     </div>
 </div>
 {% endblock %}

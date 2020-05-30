@@ -3335,5 +3335,7 @@ input, select, textarea {
 
 /* Boxed */
 .boxed {
-	border: 5px solid green ;
+	background-color: #F6F6F6 ;
+	text-align: center;
+	padding: 10px;
   }

@@ -32,7 +32,7 @@ class Receita(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     id_tipo = models.ForeignKey(Tipo,on_delete=models.CASCADE, default=1)
     id_categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE, default=1)
-    image = models.FileField(upload_to = 'blog/static/images/receitas/', default = 'static/images/receitas/noimg.jpg')
+    image = models.ImageField(upload_to = 'receitas/', default = 'receitas/noimg.jpg')
 
     def publish(self):
         self.published_date = timezone.now()
