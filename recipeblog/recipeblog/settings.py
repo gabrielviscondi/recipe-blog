@@ -25,7 +25,7 @@ SECRET_KEY = 'o%1ej2643f*sgmwzy9zpqs$kst0brvv#$yttu4q98-vli1yrvf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com','recipe-env.eba-rtyxxcmm.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com','django-receitas.eba-b3zemnwq.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
