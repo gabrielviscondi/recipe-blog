@@ -4,11 +4,11 @@
     <head>
         <title>Receitas Pedubó</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">    
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <noscript><link rel="stylesheet" href="{% static 'dist/css/noscript.css' %}"></noscript>
+        <noscript><link rel="stylesheet" href="{% static 'blog/dist/css/noscript.css' %}"></noscript>
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
 	<body class="is-preload">
@@ -21,7 +21,7 @@
 
 							<!-- Logo -->
 								<a href="/" class="logo">
-									<span class="symbol"><img src="../../static/images/teste.png" alt="" /></span><span class="title">RECEITAS PEDUBÓ</span>
+									<span class="symbol"><img src="{% static '/images/teste.png' %}" alt="" /></span><span class="title">RECEITAS PEDUBÓ</span>
 								</a>
 
 							<!-- Nav -->
@@ -40,10 +40,15 @@
 						<ul>
 							<li><a href="{% url 'receitas' %}">Todas as Receitas</a></li>
 							<li><a href="{% url 'new_recipe' %}">Adicionar Receita</a></li>
-							<li><a href="{% url 'construction' %}">Sobre o Blog</a></li>
+							<li><a href="{% url 'sobre' %}">Sobre o Blog</a></li>
+							{% if user.is_authenticated %}
+							    <li><a href="{% url 'login' %}">Sair</a></li>
+							{% else %}
+							    <li><a href="{% url 'logout' %}">Sair</a></li>
+							{% endif %}
 						</ul>
                     </nav>
-                    
+
 					{% block content %}
 					{% endblock %}
 

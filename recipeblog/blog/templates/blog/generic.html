@@ -9,18 +9,19 @@
         <h2>Nome da Receita</h2>
         <p style = "text-indent : 2em;">{{ receita.name }}</p>
         <h2>Autor(a)</h2>
-        <p style = "text-indent : 2em;">{{ receita.author.username }} </p>  
+        <p style = "text-indent : 2em;">{{ receita.author.username }} </p>
         <h2>Tipo</h2>
-        <p style = "text-indent : 2em;">{{ receita.id_tipo.name }} </p>  
+        <p style = "text-indent : 2em;">{{ receita.id_tipo.name }} </p>
         <h2>Categoria</h2>
-        <p style = "text-indent : 2em;">{{ receita.id_categoria.name }} </p>  
+        <p style = "text-indent : 2em;">{{ receita.id_categoria.name }} </p>
         <h2>Ingredientes</h2>
         <p style = "text-indent : 2em;">{{ receita.ingredients }}</p>
         <h2>Passo a Passo</h2>
         <p style = "text-indent : 2em;">{{ receita.instructions }}</p>
         <div class="boxed"><h2>Dicas</h2>
-        <p>{{ receita.hints }}</p></div>        
-        <a class="btn btn-default" href="{% url 'edit_recipe' id=receita.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <p>{{ receita.hints }}</p></div>
+        <p><h2>Editar Receita</h2></p>
+        <p><a class="btn btn-default" href="{% url 'edit_recipe' id=receita.id %}"><span class="glyphicon glyphicon-pencil"></span></a></p>
     </div>
 </div>
 {% endblock %}

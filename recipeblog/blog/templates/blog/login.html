@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<!-- Main -->
+<div id="main">
+    <div class="inner">
+        <h1><div style="text-align:center">Login</div></h1>
+        <form method="Post">
+        	{% csrf_token %}
+        	{{ form.as_p }}
+        <button type="submit">Login</button>
+    </div>
+</div>
+{% endblock %}
+
