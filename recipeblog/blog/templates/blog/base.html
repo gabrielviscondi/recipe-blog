@@ -38,16 +38,19 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-						    {% if user.is_authenticated %}
-							    <li><a href="{% url 'logout' %}">Sair</a></li>
+							{% if user.is_authenticated %}
+								<li><a href="{% url 'logout' %}">Sair</a></li>
+								<li><a href="{% url 'receitas' %}">Todas as Receitas</a></li>
+								<li><a href="{% url 'new_recipe' %}">Adicionar Receita</a></li>
+								<li><a href="{% url 'livro' %}">Acesse os Livros</a></li>
+								<li><a href="{% url 'sobre' %}">Sobre o Blog</a></li>
 							{% else %}
-							    <li><a href="{% url 'login' %}">Entrar</a></li>
+								<li><a href="{% url 'login' %}">Entrar</a></li>
+								<li><a href="{% url 'receitas' %}">Todas as Receitas</a></li>
+								<li><a href="{% url 'sobre' %}">Sobre o Blog</a></li>
 							{% endif %}
-							<li><a href="{% url 'receitas' %}">Todas as Receitas</a></li>
-							<li><a href="{% url 'new_recipe' %}">Adicionar Receita</a></li>
-							<li><a href="{% url 'sobre' %}">Sobre o Blog</a></li>
 						</ul>
-                    </nav>
+					</nav>
 
 					{% block content %}
 					{% endblock %}

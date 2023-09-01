@@ -23,5 +23,6 @@ urlpatterns = [
     path('construction/', include('blog.urls_cons')),
     path('receitas/', include('blog.urls_receitas')),
     path('sobre/', include('blog.urls_sobre')),
+    path('livro/', include('blog.urls_livro')),
     path('contas', include('blog.urls_contas')),
  ]

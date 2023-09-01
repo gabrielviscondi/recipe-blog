@@ -19,6 +19,9 @@ def construction(request):
 def sobre(request):
         return render(request, 'blog/sobre.html')
 
+def livro(request):
+        return render(request, 'blog/livro.html')
+
 def receitas(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/receitas.html', {'receitas': receitas})
