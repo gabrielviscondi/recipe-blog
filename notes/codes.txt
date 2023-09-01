@@ -1,15 +1,10 @@
---Ativar virtual env
-myenv\Scripts\activate
+--Ativar virtual 
+env myenv\Scripts\activate 
 
---Rodar servidor
-python manage.py runserver
+1. Instalar Django via Anaconda 
+2. Abrir Anaconda Prompt 
+3. Navegar até a pasta que tem o arquivo manage.py 
+4. Rodar o banco: python manage.py makemigrations blog python manage.py migrate blog 
+5. Rodar o servidor: python manage.py runserver 
 
-
---Banco
-python manage.py makemigrations blog
-python manage.py migrate blog
-
---adicionar
-Implementar busca por receitas
-implementar e-mail
-
+OBS: Eu não deixo o Banco Final no git para segurança (substituir o único arquivo)
