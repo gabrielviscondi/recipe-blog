@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import Receita
 from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.contrib.auth.decorators import login_required
 
 def post_list(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
@@ -16,9 +17,11 @@ def generic(request, id):
 def construction(request):
         return render(request, 'blog/construction.html')
 
+@login_required(login_url="/contas/login/")
 def sobre(request):
         return render(request, 'blog/sobre.html')
 
+@login_required(login_url="/contas/login/")
 def livro(request):
         return render(request, 'blog/livro.html')
 
@@ -26,6 +29,7 @@ def receitas(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/receitas.html', {'receitas': receitas})
 
+@login_required(login_url="/contas/login/")
 def new_recipe(request):
     if request.method == "POST":
         form = PostRecipe(request.POST, request.FILES)
@@ -40,6 +44,7 @@ def new_recipe(request):
         form = PostRecipe()
     return render(request, 'blog/new_recipe.html', {'form': form})
 
+@login_required(login_url="/contas/login/")
 def edit_recipe(request, id=None):
     receitas = get_object_or_404(Receita, id=id)
     if request.method == "POST":
