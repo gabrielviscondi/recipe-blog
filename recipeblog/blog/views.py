@@ -6,16 +6,16 @@ from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 
-def post_list(request):
+def home_page(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
-    return render(request, 'blog/post_list.html', {'receitas': receitas})
+    return render(request, 'blog/home_page.html', {'receitas': receitas})
 
 def generic(request, id):
     receita = Receita.objects.get(pk=id)
     return render(request, 'blog/generic.html', {'receita': receita})
 
 def construction(request):
-        return render(request, 'blog/construction.html')
+    return render(request, 'blog/construction.html')
 
 @login_required(login_url="/contas/login/")
 def sobre(request):
@@ -23,7 +23,7 @@ def sobre(request):
 
 @login_required(login_url="/contas/login/")
 def livro(request):
-        return render(request, 'blog/livro.html')
+    return render(request, 'blog/livro.html')
 
 def receitas(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
