@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.utils import timezone
 from .models import Receita
+from .models import Categoria
 from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 def home_page(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
@@ -39,7 +41,7 @@ def new_recipe(request):
             receitas.published_date = timezone.now()
             receitas.image = form.cleaned_data['image']
             receitas.save()
-            return redirect('post_list')
+            return redirect('home_page')
     else:
         form = PostRecipe()
     return render(request, 'blog/new_recipe.html', {'form': form})
