@@ -1,29 +1,34 @@
-{% extends 'blog/base.html' %}
-{% load functions %}
+{% extends 'blog/base.html' %} {% load functions %} {% block content %}
+<!-- Main -->
+<div id="main">
+  <div class="inner">
+    <header>
+      <h1><div style="text-align: center">Todas Receitas</div></h1>
+    </header>
+    <h3><div style="text-align: center">Filtrar Receitas</div></h3>
 
-{% block content %}
-    <!-- Main -->
-    <div id="main">
-        <div class="inner">
-            <header>
-                <h1><div style="text-align:center">Todas Receitas</div></h1>
+    <form method="get" class="post-form">
+      {{ filter.form.as_p }}
+
+      <button type="submit">Buscar</button>
+    </form>
 
     <section class="tiles">
-    {% for receita in receitas %}
-    
-        <article class= {% random_class %}>
-            <span class="image">
-                <img src="../media/{{receita.image}}" alt="" />
-            </span>
-            <a href="../generic/{{receita.id}}">
-                <h2>{{ receita.name }}</h2>
-                <div class="content">
-                    <p>{{ receita.short_desc}}</p>
-                </div>
-            </a>
-        </article>
-    {% endfor %}
+      {% for receita in filter.qs %}
+
+      <article class="{% random_class %}">
+        <span class="image">
+          <img src="../media/{{receita.image}}" alt="" />
+        </span>
+        <a href="../generic/{{receita.id}}">
+          <h2>{{ receita.name }}</h2>
+          <div class="content">
+            <p>{{ receita.short_desc}}</p>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
     </section>
-    </div>
-    </div>
+  </div>
+</div>
 {% endblock %}
