@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.utils import timezone
 from .models import Receita
+from .models import Categoria
 from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .filters import BuscaFilter
+
 
 def home_page(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
