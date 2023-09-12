@@ -7,6 +7,8 @@ from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from .filters import BuscaFilter
+
 
 def home_page(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
@@ -28,8 +30,9 @@ def livro(request):
     return render(request, 'blog/livro.html')
 
 def receitas(request):
-    receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/receitas.html', {'receitas': receitas})
+    filtro = BuscaFilter(request.GET, queryset=Receita.objects.all().order_by('-published_date'))
+
+    return render(request, 'blog/receitas.html', {'filter': filtro})
 
 @login_required(login_url="/contas/login/")
 def new_recipe(request):
