@@ -4,28 +4,34 @@ from django.utils import timezone
 from .models import Receita
 from .forms import PostRecipe
 from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.contrib.auth.decorators import login_required
+from .filters import BuscaFilter
 
-def post_list(request):
+def home_page(request):
     receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:9]
-    return render(request, 'blog/post_list.html', {'receitas': receitas})
+    return render(request, 'blog/home_page.html', {'receitas': receitas})
 
 def generic(request, id):
     receita = Receita.objects.get(pk=id)
     return render(request, 'blog/generic.html', {'receita': receita})
 
 def construction(request):
-        return render(request, 'blog/construction.html')
+    return render(request, 'blog/construction.html')
 
+@login_required(login_url="/contas/login/")
 def sobre(request):
         return render(request, 'blog/sobre.html')
 
+@login_required(login_url="/contas/login/")
 def livro(request):
-        return render(request, 'blog/livro.html')
+    return render(request, 'blog/livro.html')
 
 def receitas(request):
-    receitas = Receita.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/receitas.html', {'receitas': receitas})
+    filtro = BuscaFilter(request.GET, queryset=Receita.objects.all().order_by('-published_date'))
 
+    return render(request, 'blog/receitas.html', {'filter': filtro})
+
+@login_required(login_url="/contas/login/")
 def new_recipe(request):
     if request.method == "POST":
         form = PostRecipe(request.POST, request.FILES)
@@ -35,11 +41,12 @@ def new_recipe(request):
             receitas.published_date = timezone.now()
             receitas.image = form.cleaned_data['image']
             receitas.save()
-            return redirect('post_list')
+            return redirect('home_page')
     else:
         form = PostRecipe()
     return render(request, 'blog/new_recipe.html', {'form': form})
 
+@login_required(login_url="/contas/login/")
 def edit_recipe(request, id=None):
     receitas = get_object_or_404(Receita, id=id)
     if request.method == "POST":

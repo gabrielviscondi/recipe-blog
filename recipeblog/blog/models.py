@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from smart_selects.db_fields import ChainedForeignKey
 
 class Tipo(models.Model):
     name = models.CharField(max_length=200)
@@ -32,6 +33,14 @@ class Receita(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     id_tipo = models.ForeignKey(Tipo,on_delete=models.CASCADE, default=1)
     id_categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE, default=1)
+    id_categoria = ChainedForeignKey(
+        Categoria,
+        chained_field="id_tipo",
+        chained_model_field="id_tipo",
+        show_all=False,
+        auto_choose=True,
+        sort=True
+    )
     image = models.ImageField(upload_to = 'receitas/', default = 'receitas/noimg.jpg')
 
     def publish(self):
